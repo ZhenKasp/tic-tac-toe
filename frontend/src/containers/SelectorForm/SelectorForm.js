@@ -4,7 +4,7 @@ import SignIn from '../../components/SignIn/SignIn';
 import SignUp from '../../components/SignUp/SignUp';
 import FlashMessage from '../../components/FlashMessage/FlashMessage';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
-import TicTacToe from '../TicTacToe/TicTacToe';
+import IndexPage from '../IndexPage/IndexPage';
 
 class SelectorForm extends Component {
   state = {
@@ -27,7 +27,7 @@ class SelectorForm extends Component {
   chooseViewToRender = () => {
     if (localStorage.getItem('token')) {
       return (
-        <TicTacToe
+        <IndexPage
           createFlashMessage={this.flashMessageHandler}
           viewHandler={this.viewHandler}
           setToken={this.setToken}

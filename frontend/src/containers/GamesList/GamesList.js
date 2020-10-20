@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import ListElement from "../../components/ListElement/ListElement";
 import axios from 'axios';
-import Aux from '../../hoc/Auxiliary';
-import classes from './ListGames.module.css';
+import classes from './GamesList.module.css';
 
-class ListGames extends Component {
+class GamesList extends Component {
   state = {
     games: [{id: 1, name: "First game"}, {id: 2, name: "This is a game #2"}]
   }
@@ -41,23 +40,21 @@ class ListGames extends Component {
       }))
     } else {
       return (
-        <div>There are no available games, but u can create one of them!</div>
+        <div>There are no available games, but you can create one of them!</div>
       )
     }
   }
 
   render() {
     const ListElement = this.returnGameElements;
+
     return (
-      <Aux>
-        <ListGames />
-        <div className={classes.ListGames}>
-          <div className={classes.Header}>List of games:</div>
-          <ListElement />
-        </div>
-      </Aux>
+      <div className={classes.GamesList}>
+        <div className={classes.Header}>List of games:</div>
+        <ListElement />
+      </div>
     )
   }
 }
 
-export default ListGames;
+export default GamesList;

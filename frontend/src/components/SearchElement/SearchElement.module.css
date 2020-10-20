@@ -1,7 +1,10 @@
 .SearchElement {
+  max-width: 600px;
+  min-width: 500px;
   margin-left: 30px;
   margin-top: 60px;
   display: inline-block;
+  width: 100%;
 }
 
 .SearchElement p {
@@ -9,7 +12,8 @@
 }
 
 .SearchElement button {
-  width: 100%;
+  min-width: 200px;
+  width: 200px;
   background-color: #53346d !important;
 }
 

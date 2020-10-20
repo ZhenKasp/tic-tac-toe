@@ -1,3 +1,18 @@
 .CreateGame {
-  
+  margin: 10px;
+  margin-left: 30px;
+  font-size: 30px;
+}
+
+.CreateGame .Header {
+  margin-bottom: 10px;
+}
+
+.CreateGame button {
+  width: 200px;
+  background-color: #53346d !important;
+}
+
+.CreateGame button:hover, .CreateGame button:active {
+  background-color: #43265c !important;
 }

@@ -1,8 +1,8 @@
-.ListGames {
+.GamesList {
   margin-top: 30px;
   margin-left: 30px;
 }
 
-.ListGames .Header {
+.GamesList .Header {
   font-size: 30px;
 }

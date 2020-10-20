@@ -9,14 +9,18 @@
   margin-top: 112px;
 }
 
-.SignIn button {
+.SignIn Button {
   width: 100%;
   margin-top: 20px;
   height: 45px;
-  background-color: #53346d;
+  background-color: #53346d !important;
 }
 
-.SignIn button:hover {
-  background-color: #43265c;
+.SignIn Button:hover {
+  background-color: #43265c !important;
+}
+
+.SignIn Button:hover, .SignIn Button:active {
+  background-color: #43265c !important;
 }
 

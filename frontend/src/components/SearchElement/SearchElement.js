@@ -9,14 +9,14 @@ import Col from 'react-bootstrap/Col';
 const searchElement = (props) => (
   <div className={classes.SearchElement}> 
     <p>Search:</p> 
-    <Form>
+    <Form onSubmit={(event) => console.log(event)} >
       <Row>
         <Col>
-          <Form.Control type="text" placeholder="Search the game" />
+          <Form.Control type="text" placeholder="Search game" />
         </Col>
         <Col>
-          <Button variant="primary" type="submit">
-            Find the game
+          <Button variant="primary">
+            Find game
           </Button>
         </Col>
       </Row>    
