@@ -1,0 +1,44 @@
+.Cell {
+  border: 2px solid #53346d;
+  background-color: white;
+  border-radius: 5px;
+  max-height: 100px;
+}
+
+.Cell:hover {
+  background-color: #e0e0e2;
+}
+
+.Cross {
+  background-color: #90d4dd;
+}
+
+.Cross:before {
+  font-size: 100px;
+  top: -5px;
+  left: 10px;
+  position: relative;
+  color: #00078E;
+  text-shadow: -3px 2px 0px rgba(255, 255, 255,1);
+}
+
+.Cross:hover {
+  background-color: #90d4dd;
+}
+
+.Circle {
+  background-color: #90d4dd;
+}
+
+.Circle:before {
+  font-size: 95px;
+  top: 0;
+  left: 10px;
+  position: relative;
+  color: #E24444;
+  text-shadow: -3px 2px 0px rgba(255, 255, 255,1);
+}
+
+.Circle:hover {
+  background-color: #90d4dd;
+}

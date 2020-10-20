@@ -6,13 +6,26 @@ import CreateGame from '../../components/CreateGame/CreateGame';
 import GameBoard from '../../components/GameBoard/GameBoard';
 
 class IndexPage extends Component {
+  state = {
+    isGame: localStorage.setItem("isGame", false),
+    gameParams: {}
+  }
+
+  changeView = (isGame, params) => {
+    this.setState({ isGame: isGame, gameParams: params })
+  }
+
   render() {
     return (
       <Aux>
-        <SearchElement />
-        <CreateGame />
-        <GamesList />
-        <GameBoard />
+        {this.state.isGame === false ? (
+          <Aux>
+            <SearchElement />
+            <CreateGame />
+            <GamesList changeView={this.changeView} />
+          </Aux>
+        ) : <GameBoard params={this.state.gameParams} />
+        }
       </Aux>
     )
   }

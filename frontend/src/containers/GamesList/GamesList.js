@@ -35,6 +35,7 @@ class GamesList extends Component {
             key={game.id}
             id={game.id}
             name={game.name}
+            changeView={this.props.changeView}
           />
         )
       }))

@@ -1,47 +1,56 @@
-import React, { useState } from 'react';
+import React, { Component  } from 'react';
 import classes from './GameBoard.module.css';
+import cellClasses from "../Cell/Cell.module.css";
+import Cell from '../Cell/Cell';
+import Aux from '../../hoc/Auxiliary';
 
-const GameBoard = (props) => {
-  const [moveSign, setMoveSign] = useState(1);
+class GameBoard extends Component {
+  state = {
+    moveSign: localStorage.setItem("moveSign", "cross"),
+    array: [
+      0, 1, 0,
+      1, 0, 1, 
+      0, 1, 0
+    ]
+  }
 
-  const onClick = (target) => {
+  onClick = (target) => {
     if (!target.classList.contains("fa")) {
-      if (moveSign) {
-        target.classList.add("fa", "fa-close", classes.Cross)
-        setMoveSign(0)
+      if (localStorage.getItem("moveSign") === "cross") {
+        target.classList.add("fa", "fa-close", cellClasses.Cross)
+        localStorage.setItem("moveSign", "circle")
       } else {
-        target.classList.add("fa", "fa-circle-o", classes.Circle)
-        setMoveSign(1)
+        target.classList.add("fa", "fa-circle-o", cellClasses.Circle)
+        localStorage.setItem("moveSign", "cross")
       } 
     }
   }
 
-  return (
-    <div className={classes.GameBoard}>
-      <div className={classes.Header}>
-        GameBoard:
-      </div>
-      <div className={classes.Board}> 
-        <ul className={classes.Row}>
-          <li id="box1" className={classes.Box} onClick={event => onClick(event.currentTarget)}></li>
-          <li id="box2" className={classes.Box} onClick={event => onClick(event.currentTarget)}></li>
-          <li id="box3" className={classes.Box} onClick={event => onClick(event.currentTarget)}></li>
-        </ul> 
+  returnCells = () => {
+    const array = [...this.state.array]
+    return (
+      array.map((cell, index) => {
+        return (
+          <Cell key={`box${index + 1}`} id={`box${index + 1}`} onClick={this.onClick} move={cell} />
+        )
+      })
+    )
+  }
 
-        <ul className={classes.Row}>
-          <li id="box4" className={classes.Box} onClick={event => onClick(event.currentTarget)}></li>
-          <li id="box5" className={classes.Box} onClick={event => onClick(event.currentTarget)}></li>
-          <li id="box6" className={classes.Box} onClick={event => onClick(event.currentTarget)}></li>
-        </ul>
-        
-        <ul className={classes.Row}>
-          <li id="box7" className={classes.Box} onClick={event => onClick(event.currentTarget)}></li>
-          <li id="box8" className={classes.Box} onClick={event => onClick(event.currentTarget)}></li>
-          <li id="box9" className={classes.Box} onClick={event => onClick(event.currentTarget)}></li>
-        </ul>
-      </div>
-    </div>
-  )
+  render () {
+    const Cells = this.returnCells;
+
+    return (
+      <Aux>
+        <div className={classes.Header}>
+          GameBoard:
+        </div>
+        <div className={classes.Board}>
+          <Cells /> 
+        </div>
+      </Aux>
+    )
+  }
 }
-
+  
 export default GameBoard;
