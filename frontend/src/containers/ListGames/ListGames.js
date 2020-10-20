@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import ListElement from "../../components/ListElement/ListElement";
-import classes from './ListGames.module.css';
 import axios from 'axios';
 import Aux from '../../hoc/Auxiliary';
-import SearchElement from '../../components/SearchElement/SearchElement';
+import classes from './ListGames.module.css';
 
 class ListGames extends Component {
   state = {
@@ -33,10 +32,10 @@ class ListGames extends Component {
     if (games.length !== 0) {
       return (games.map(game => {
         return (
-          <ListElement 
+          <ListElement
             key={game.id}
             id={game.id}
-            name={game.name}  
+            name={game.name}
           />
         )
       }))
@@ -46,19 +45,19 @@ class ListGames extends Component {
       )
     }
   }
- 
+
   render() {
     const ListElement = this.returnGameElements;
     return (
       <Aux>
-        <SearchElement />
+        <ListGames />
         <div className={classes.ListGames}>
           <div className={classes.Header}>List of games:</div>
           <ListElement />
         </div>
-      </Aux> 
+      </Aux>
     )
   }
 }
 
-export default ListGames
+export default ListGames;

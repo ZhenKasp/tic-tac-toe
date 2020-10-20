@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import TicTacToe from './containers/TicTacToe/TicTacToe';
+import SelectorForm from './containers/SelectorForm/SelectorForm';
 
 class App extends Component {
 
   render () {
-    return ( 
-      <TicTacToe />
+    return (
+      <SelectorForm />
     );
   }
 }

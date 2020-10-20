@@ -7,10 +7,12 @@ const Game = sequelize.define('game', {
     type: DataTypes.STRING,
     isAlphanumeric: true
   },
+
   moves:{
-    type: DataTypes.ARRAY(DataTypes.DECIMAL)
-  } 
-}, { 
+    type: DataTypes.STRING,
+    isAlphanumeric: true
+  }
+}, {
   timestamps: true,
   createdAt: true,
   updatedAt: true,
