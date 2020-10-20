@@ -10,9 +10,9 @@
 
 .SearchElement button {
   width: 100%;
-  background-color: #53346d;
+  background-color: #53346d !important;
 }
 
-.SearchElement button:hover {
-  background-color: #43265c;
+.SearchElement button:hover, .SearchElement button:active {
+  background-color: #43265c !important;
 }

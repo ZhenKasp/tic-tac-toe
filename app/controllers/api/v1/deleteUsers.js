@@ -1,10 +1,8 @@
 const User = require('../../../models/User');
 const authenticateToken = require('../../../midlware/authenticateToken');
-const checkUserExistsAndActive = require('../../../utilities/checkUserExistsAndActive');
-const isCurrentUserAvailable = require('../../../utilities/isCurrentUserAvailable');
 
 deleteUsers = (app) => {
-  app.delete('/api/v1/delete', authenticateToken, checkUserExistsAndActive, (req, res) => { 
+  app.delete('/api/v1/delete', authenticateToken, (req, res) => { 
     if (req.query) {
       let userIDs = req.query.id.split(";");
       try {
@@ -14,7 +12,7 @@ deleteUsers = (app) => {
           setTimeout(() => {
             User.findAll().then(
               users => { 
-                if (isCurrentUserAvailable(users, req.body.email)) {
+                if (users) {
                   res.json({
                     message: "Delete successful.",
                     users: users
@@ -31,7 +29,7 @@ deleteUsers = (app) => {
           }, 1000)
         );
       } catch (error) {
-        res.json({ error: { message: "Samething went wrong on delete action" , data: error }});
+        res.json({ error: { message: "Something went wrong on delete action" , data: error }});
       }
     }
   }); 

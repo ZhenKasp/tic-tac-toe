@@ -1,16 +1,13 @@
 const User = require('../../../models/User.js');
 const authenticateToken = require('../../../midlware/authenticateToken');
-const checkUserExistsAndActive = require('../../../utilities/checkUserExistsAndActive');
-const isCurrentUserAvailable = require('../../../utilities/isCurrentUserAvailable');
 
 block = (app) => {
-  app.patch('/api/v1/block', authenticateToken, checkUserExistsAndActive, (req,res) => {
+  app.patch('/api/v1/block', authenticateToken, (req,res) => {
     let userIDs = req.body.id.split(";");
     User.update({ status: "blocked" }, {where: {id: userIDs}}).then(
       setTimeout(() => {
         User.findAll().then(users => {
-          
-          if (isCurrentUserAvailable(users, req.body.email)) {
+          if (users) {
             res.json({ 
               users: users, 
               message: "Block successful.",

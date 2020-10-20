@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 
 const searchElement = (props) => (
   <div className={classes.SearchElement}> 
-  <p>Search:</p> 
+    <p>Search:</p> 
     <Form>
       <Row>
         <Col>

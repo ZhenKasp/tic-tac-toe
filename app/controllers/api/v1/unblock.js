@@ -1,9 +1,8 @@
 const User = require('../../../models/User.js');
 const authenticateToken = require('../../../midlware/authenticateToken');
-const checkUserExistsAndActive = require('../../../utilities/checkUserExistsAndActive');
 
 unblock = (app) => {
-  app.patch('/api/v1/unblock', authenticateToken, checkUserExistsAndActive, (req,res) => {
+  app.patch('/api/v1/unblock', authenticateToken, (req,res) => {
     let userIDs = req.body.id.split(";");
     User.update({ status: "active" }, {where: {id: userIDs}}).then(
       setTimeout(() => {
