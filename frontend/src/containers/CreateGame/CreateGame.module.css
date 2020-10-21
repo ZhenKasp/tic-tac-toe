@@ -76,3 +76,38 @@ input:focus {
   cursor: pointer;
   color: #40A4C8;
 }
+
+.SuggestionsTag {
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  color: #495057;
+  transition: 1.3s ease-out;
+  height: 100%;
+  position: relative;
+}
+
+.SuggestionsTag ul {
+  list-style-type: none;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.SuggestionsTag li {
+  border-bottom: 1px solid #ddd;
+  padding: 7px 20px;
+  margin-left: -40px;
+  cursor: pointer;
+}
+
+.SuggestionsTag li:last-child {
+  border-bottom: none;
+}

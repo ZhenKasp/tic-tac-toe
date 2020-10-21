@@ -78,8 +78,17 @@ class CreateGame extends Component {
               tag: classes.Tag,
               tagInputField: classes.TagInputField,
               tagInput: classes.TagInput,
-              remove: classes.RemoveTag
+              remove: classes.RemoveTag,
+              suggestions: classes.SuggestionsTag
             }}
+            suggestions={[
+              { id: 'USA', text: 'USA' },
+              { id: 'Germany', text: 'Germany' },
+              { id: 'Austria', text: 'Austria' },
+              { id: 'Costa Rica', text: 'Costa Rica' },
+              { id: 'Sri Lanka', text: 'Sri Lanka' },
+              { id: 'Thailand', text: 'Thailand' }
+           ]}
             tags={this.state.tags}
             name="tags"
             handleDelete={this.handleDelete}
