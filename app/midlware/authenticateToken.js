@@ -13,7 +13,10 @@ authenticateToken = (req, res, next) => {
         variant: "danger"
       }).sendStatus(403); 
     };
+
+    req.body.id = user.id;
     req.body.email = user.email;
+    req.body.username = user.username;
     req.body.token = token;
     next();
   });

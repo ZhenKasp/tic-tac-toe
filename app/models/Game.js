@@ -10,6 +10,9 @@ const Game = sequelize.define('game', {
   moves:{
     type: DataTypes.STRING,
     isAlphanumeric: true
+  },
+  tags: {
+    type: DataTypes.STRING
   }
 }, {
   timestamps: true,
@@ -17,7 +20,13 @@ const Game = sequelize.define('game', {
   updatedAt: true,
 });
 
-Game.belongsTo(User, { as: "firstUser" });
-Game.belongsTo(User, { as: "secondUser" });
+Game.belongsTo(User, { 
+  as: "firstUser", 
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE' });
+Game.belongsTo(User, { 
+  as: "secondUser",
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE'  });
 
 module.exports = Game;

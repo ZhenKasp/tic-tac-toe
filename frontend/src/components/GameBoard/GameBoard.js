@@ -7,29 +7,31 @@ import Aux from '../../hoc/Auxiliary';
 class GameBoard extends Component {
   state = {
     moveSign: localStorage.setItem("moveSign", "cross"),
-    array: [
-      0,0,0,0,0,0,0,0,0
-    ]
+    array: localStorage.setItem("moves", "0|0|0|0|0|0|0|0|0")
   }
 
   onClick = (target) => {
     if (!target.classList.contains("fa")) {
+      let moves = localStorage.getItem("moves").split('|');
       if (localStorage.getItem("moveSign") === "cross") {
-        target.classList.add("fa", "fa-close", cellClasses.Cross)
-        localStorage.setItem("moveSign", "circle")
+        target.classList.add("fa", "fa-close", cellClasses.Cross);
+        localStorage.setItem("moveSign", "circle");
+        moves[target.id] = 1;
       } else {
-        target.classList.add("fa", "fa-circle-o", cellClasses.Circle)
-        localStorage.setItem("moveSign", "cross")
-      } 
+        target.classList.add("fa", "fa-circle-o", cellClasses.Circle);
+        localStorage.setItem("moveSign", "cross");
+        moves[target.id] = 2;
+      }
+      localStorage.setItem("moves", moves.join("|"));
     }
   }
 
   returnCells = () => {
-    const array = [...this.state.array]
+    const array = [...localStorage.getItem("moves").split('|')];
     return (
       array.map((cell, index) => {
         return (
-          <Cell key={`box${index + 1}`} id={`box${index + 1}`} onClick={this.onClick} move={cell} />
+          <Cell key={`box${index}`} id={index} onClick={this.onClick} move={cell} />
         )
       })
     )

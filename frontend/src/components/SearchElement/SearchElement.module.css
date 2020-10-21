@@ -14,9 +14,11 @@
 .SearchElement button {
   min-width: 200px;
   width: 200px;
-  background-color: #53346d !important;
+  background-color: #53346d;
+  border-color: #51326b;
 }
 
-.SearchElement button:hover, .SearchElement button:active {
+.SearchElement button:hover, .SearchElement button:active, .SearchElement button:focus {
   background-color: #43265c !important;
+  border-color: #51326b;
 }

@@ -5,14 +5,13 @@ import classes from './GamesList.module.css';
 
 class GamesList extends Component {
   state = {
-    games: [{id: 1, name: "First game"}, {id: 2, name: "This is a game #2"}]
+    games: []
   }
 
-  componentDidMount(){
+  componentWillMount(){
     try {
       axios.get(process.env.REACT_APP_PATH_TO_SERVER, { headers: { authorization: localStorage.getItem('token') }})
       .then(res => {
-        console.log(res.data)
         if (res.data.error) {
           this.props.createFlashMessage(res.data.error, res.data.variant);
           this.props.setToken({token: res.data.token});
@@ -28,6 +27,7 @@ class GamesList extends Component {
 
   returnGameElements = () => {
     const games = this.state.games;
+    console.log(games);
     if (games.length !== 0) {
       return (games.map(game => {
         return (
@@ -35,6 +35,7 @@ class GamesList extends Component {
             key={game.id}
             id={game.id}
             name={game.name}
+            tags={game.tags}
             changeView={this.props.changeView}
           />
         )

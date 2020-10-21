@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Auxiliary';
 import SearchElement from '../../components/SearchElement/SearchElement';
 import GamesList from '../GamesList/GamesList';
-import CreateGame from '../../components/CreateGame/CreateGame';
+import CreateGame from '../CreateGame/CreateGame';
 import GameBoard from '../../components/GameBoard/GameBoard';
 
 class IndexPage extends Component {
@@ -11,8 +11,12 @@ class IndexPage extends Component {
     gameParams: {}
   }
 
-  changeView = (isGame, params) => {
-    this.setState({ isGame: isGame, gameParams: params })
+  changeGameParams = (gameParams) => {
+    this.setState({gameParams: gameParams})
+  }
+
+  changeView = (isGame) => {
+    this.setState({ isGame: isGame})
   }
 
   render() {
@@ -21,8 +25,15 @@ class IndexPage extends Component {
         {this.state.isGame === false ? (
           <Aux>
             <SearchElement />
-            <CreateGame createFlashMessage={this.props.createFlashMessage}/>
-            <GamesList changeView={this.changeView} />
+            <CreateGame 
+              createFlashMessage={this.props.createFlashMessage} 
+              changeGameParams={this.changeGameParams}
+              changeView={this.changeView}
+            />
+            <GamesList 
+              changeView={this.changeView}
+              gameList={this.state.gameList}
+              />
           </Aux>
         ) : <GameBoard params={this.state.gameParams} />
         }

@@ -11,10 +11,16 @@ const listElement = (props) => {
         {props.name}
       </div>
       <div>
-        First user
+        {props.tags && props.tags.split("|").join(" ")}
+      </div>
+      <div>
+        {props.firstUser}
       </div>
       <div>
         Second user
+      </div>
+      <div>
+        GamePreview
       </div>
     </div>
   )
