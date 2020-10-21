@@ -7,7 +7,7 @@ import GameBoard from '../../components/GameBoard/GameBoard';
 
 class IndexPage extends Component {
   state = {
-    isGame: localStorage.setItem("isGame", false),
+    isGame: false,
     gameParams: {}
   }
 
@@ -21,7 +21,7 @@ class IndexPage extends Component {
         {this.state.isGame === false ? (
           <Aux>
             <SearchElement />
-            <CreateGame />
+            <CreateGame createFlashMessage={this.props.createFlashMessage}/>
             <GamesList changeView={this.changeView} />
           </Aux>
         ) : <GameBoard params={this.state.gameParams} />

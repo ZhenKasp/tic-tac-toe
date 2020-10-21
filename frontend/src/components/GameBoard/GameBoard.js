@@ -8,9 +8,7 @@ class GameBoard extends Component {
   state = {
     moveSign: localStorage.setItem("moveSign", "cross"),
     array: [
-      0, 1, 0,
-      1, 0, 1, 
-      0, 1, 0
+      0,0,0,0,0,0,0,0,0
     ]
   }
 

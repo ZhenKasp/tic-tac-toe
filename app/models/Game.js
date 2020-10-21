@@ -7,7 +7,6 @@ const Game = sequelize.define('game', {
     type: DataTypes.STRING,
     isAlphanumeric: true
   },
-
   moves:{
     type: DataTypes.STRING,
     isAlphanumeric: true
