@@ -3,12 +3,13 @@ import ListElement from "../../components/ListElement/ListElement";
 import axios from 'axios';
 import classes from './GamesList.module.css';
 
+
 class GamesList extends Component {
   state = {
     games: []
   }
 
-  componentWillMount(){
+  componentWillMount() {
     try {
       axios.get(process.env.REACT_APP_PATH_TO_SERVER, { headers: { authorization: localStorage.getItem('token') }})
       .then(res => {
@@ -27,7 +28,6 @@ class GamesList extends Component {
 
   returnGameElements = () => {
     const games = this.state.games;
-    console.log(games);
     if (games.length !== 0) {
       return (games.map(game => {
         return (
@@ -49,7 +49,6 @@ class GamesList extends Component {
 
   render() {
     const ListElement = this.returnGameElements;
-
     return (
       <div className={classes.GamesList}>
         <div className={classes.Header}>List of games:</div>
