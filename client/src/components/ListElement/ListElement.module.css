@@ -15,7 +15,3 @@
   background-color: #51326b;
   color: white;
 }
-
-.ListElement:first-child {
-  margin-left: 0;
-}

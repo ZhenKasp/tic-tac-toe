@@ -5,9 +5,6 @@ const listElement = (props) => {
   return (
     <div className={classes.ListElement} onClick={() => props.changeView(props.moves)}>
       <div>
-        {props.id}
-      </div>
-      <div>
         {props.name}
       </div>
       <div>

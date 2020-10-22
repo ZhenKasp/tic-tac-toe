@@ -31,15 +31,15 @@ class GameBoard extends Component {
   }
   
   componentDidMount() {
-    // try {
-    //   const ENDPOINT = "http://127.0.0.1:8000/";
-    //   const socket = socketIOClient(ENDPOINT);
-    //   socket.on("FromAPI", data => {
-    //     this.setState({response: data});
-    //   });
-    // } catch (err) {
-    //   console.log(err.message)
-    // }
+    try {
+      const socket = socketIOClient(process.env.REACT_APP_ENDPOINT);
+      socket.on("FromAPI", data => {
+        this.setState({response: data});
+        console.log(data)
+      });
+    } catch (err) {
+      console.log(err.message)
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
