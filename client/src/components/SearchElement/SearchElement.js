@@ -9,7 +9,7 @@ const searchElement = (props) => (
     <p>Search:</p> 
     <Form onSubmit={(event) => console.log(event)} >
       <Form.Control type="text" placeholder="Search game" />
-      <Button variant="primary">
+      <Button variant="primary" type="submit">
         Find game
       </Button> 
     </Form>

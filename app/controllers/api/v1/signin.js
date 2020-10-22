@@ -18,7 +18,7 @@ signin = (app) => {
               if (err) throw err;
               if (data) {
                 res.json({ 
-                  token: generateAccessToken(email), 
+                  token: generateAccessToken(email, user.username, user.id), 
                   message: "Login successful." , 
                   variant: "success" 
                 });  

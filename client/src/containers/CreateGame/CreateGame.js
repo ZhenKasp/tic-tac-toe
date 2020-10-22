@@ -10,7 +10,9 @@ class CreateGame extends Component {
   state = {
     tags: [],
     name: '',
-    modalIsShown: false
+    modalIsShown: false,
+    resetMoves: false,
+    moves: "0|0|0|0|0|0|0|0|0"
   }
 
   handleMovesChange = (moves) => {
@@ -21,12 +23,12 @@ class CreateGame extends Component {
     this.setState({name: event.target.value});
   }
 
-  modalIsShownhandler = () => {
-    this.setState({modalIsShown: true}); 
+  modalIsShownHandler = () => {
+    this.setState({modalIsShown: true, resetMoves: true }); 
   }
 
   modalCloseHandler = () => {
-    this.setState({modalIsShown: false}); 
+    this.setState({modalIsShown: false, resetMoves: false, name: '', tags: [] });
   }
 
   tagsHandler = tags => this.setState({tags: tags})
@@ -37,7 +39,7 @@ class CreateGame extends Component {
       const object = {
         name,
         tags: tags.map(tag => tag.text).join('|'),
-        moves: localStorage.getItem("moves")
+        moves: this.state.moves
       };
 
       axios.post(process.env.REACT_APP_PATH_TO_SERVER + "games", object, { headers: { authorization: localStorage.getItem('token') }})
@@ -46,16 +48,16 @@ class CreateGame extends Component {
           this.props.createFlashMessage(res.data.error, res.data.variant);
           this.modalCloseHandler();
         } else {
-          this.setState({ name: '', tags: [] });
-
           this.props.createFlashMessage(res.data.message, res.data.variant)
-          this.modalCloseHandler();
+          this.props.changeView(this.state.moves)
         }
       });
     } catch (err) {
       this.props.createFlashMessage(err.message, "danger");
     }
   }
+
+  movesChangeHandler = (moves) => this.setState({moves: moves})
 
   render() {
     return ( 
@@ -72,7 +74,7 @@ class CreateGame extends Component {
             />
             <TagsInput onChange={this.tagsHandler} parentTags={this.state.tags} />
             <div className={classes.Header}>Set the first move:</div>
-            <GameBoard isCreate={true} />
+            <GameBoard isCreate={true} resetMoves={this.state.resetMoves} onChange={this.movesChangeHandler} />
             <Button 
               className={classes.ButtonSubmit} 
               variant="primary" 
@@ -82,9 +84,7 @@ class CreateGame extends Component {
             </Button> 
           </Modal>
           <Button 
-            variant="primary" 
-            type="sybmit" 
-            onClick={this.modalIsShownhandler}>
+            onClick={this.modalIsShownHandler}>
             Create game
           </Button> 
       </div>

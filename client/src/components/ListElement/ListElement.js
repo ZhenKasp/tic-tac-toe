@@ -3,7 +3,7 @@ import classes from './ListElement.module.css'
 
 const listElement = (props) => {
   return (
-    <div className={classes.ListElement} onClick={() => props.changeView(true, "")}>
+    <div className={classes.ListElement} onClick={() => props.changeView(props.moves)}>
       <div>
         {props.id}
       </div>

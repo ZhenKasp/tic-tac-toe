@@ -3,9 +3,9 @@ import classes from "./Cell.module.css";
 
 const cell = (props) => {
   let move = ""
-  if (props.move === 1) {
+  if (props.move === "1") {
     move = classes.Cross + ' fa fa-close'
-  } else if (props.move === 2) {
+  } else if (props.move === "2") {
     move = classes.Circle + ' fa fa-circle-o'
   }
 

@@ -9,16 +9,10 @@ import classes from './IndexPage.module.css'
 class IndexPage extends Component {
   state = {
     isGame: false,
-    gameParams: {}
+    moves: "0|0|0|0|0|0|0|0|0"
   }
 
-  changeGameParams = (gameParams) => {
-    this.setState({gameParams: gameParams})
-  }
-
-  changeView = (isGame) => {
-    this.setState({ isGame: isGame})
-  }
+  changeView = (moves) => this.setState({ isGame: true, moves: moves})
 
   render() {
     return (
@@ -26,8 +20,7 @@ class IndexPage extends Component {
         {this.state.isGame === false ? (
           <Aux>
             <CreateGame 
-              createFlashMessage={this.props.createFlashMessage} 
-              changeGameParams={this.changeGameParams}
+              createFlashMessage={this.props.createFlashMessage}
               changeView={this.changeView}
             />
             <SearchElement />
@@ -36,7 +29,7 @@ class IndexPage extends Component {
               gameList={this.state.gameList}
               />
           </Aux>
-        ) : <GameBoard params={this.state.gameParams} />
+        ) : <GameBoard params={this.state.gameParams} blockMoves={false} moves={this.state.moves} />
         }
       </div>
     )
