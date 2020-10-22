@@ -13,17 +13,15 @@ signup = (app) => {
     
     (async () => {
       try {
-        const date = new Date();
         const newUser = await User.create({
           email: email,
           username: username,
           firstname: firstname,
           lastname: lastname,
           password: hashPass,
-          lastSignInAt: date
         });
         await newUser.save();
-        const token = generateAccessToken(email);
+        const token = generateAccessToken(email, username, newUser.id);
 
         res.json({ token: token, message: "Registration successful." , variant: "success"});
       } catch (error) {

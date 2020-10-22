@@ -1,0 +1,20 @@
+.SearchElement {
+  max-width: 274px;
+  width: 100%;
+}
+
+.SearchElement p {
+  font-size: 30px;
+}
+
+.SearchElement button {
+  min-width: 200px;
+  width: 200px;
+  background-color: #53346d;
+  border-color: #51326b;
+}
+
+.SearchElement button:hover, .SearchElement button:active, .SearchElement button:focus {
+  background-color: #43265c !important;
+  border-color: #51326b;
+}

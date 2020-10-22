@@ -1,0 +1,26 @@
+.CreateGame .Header {
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.CreateGame button {
+  width: 200px;
+  background-color: #53346d;
+  border-color: #51326b;
+}
+
+.CreateGame button:hover, .CreateGame button:active, .CreateGame button:focus {
+  background-color: #43265c !important;
+  border-color: #51326b;
+}
+
+.CreateGame input {
+  width: 315px;
+  min-width: 200px;
+  max-width: 315px;
+}
+
+.ButtonSubmit {
+  margin-top: 10px;
+  width: 315px !important;
+}

@@ -1,15 +1,13 @@
-const User = require('../../../models/User.js')
+const Game = require('../../../models/Game.js')
 const authenticateToken = require('../../../midlware/authenticateToken');
-const checkUserExistsAndActive = require('../../../utilities/checkUserExistsAndActive');
-
 index = (app) => {
-  app.get('/api/v1', authenticateToken, checkUserExistsAndActive, (req,res) => {
-    User.findAll().then((users => {
-      res.json({ 
-        users: users
-      }); 
+  app.get('/api/v1', authenticateToken, (req,res) => {
+    Game.findAll().then((games => {
+      res.json({
+        games: games
+      });
     }))
-  });     
+  });
 }
 
 module.exports = index;

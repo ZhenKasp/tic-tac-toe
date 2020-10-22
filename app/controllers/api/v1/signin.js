@@ -1,10 +1,9 @@
 const generateAccessToken = require('../../../midlware/generateAccessToken');
 const User = require('../../../models/User');
 const bcrypt = require('bcryptjs');
-const checkUserExistsAndActive = require('../../../utilities/checkUserExistsAndActive');
 
 signin = (app) => {
-  app.post('/api/v1/signin', checkUserExistsAndActive, (req, res) => {
+  app.post('/api/v1/signin', (req, res) => {
     const email = req.body.email.toLowerCase();
     const password = req.body.password;
     (async () => {
@@ -19,7 +18,7 @@ signin = (app) => {
               if (err) throw err;
               if (data) {
                 res.json({ 
-                  token: generateAccessToken(email), 
+                  token: generateAccessToken(email, user.username, user.id), 
                   message: "Login successful." , 
                   variant: "success" 
                 });  

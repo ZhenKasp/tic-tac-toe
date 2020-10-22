@@ -5,7 +5,8 @@ const isUnique = require('../utilities/isUnique');
 const User = sequelize.define('user', {
   username:{
     type: DataTypes.STRING,
-    isAlphanumeric: true
+    isAlphanumeric: true,
+    isUnique: isUnique("User", "username")
   },
   firstname:{
     type: DataTypes.STRING,
@@ -26,13 +27,6 @@ const User = sequelize.define('user', {
   },
   password:{
     type: DataTypes.STRING
-  },
-  status: {
-    type: DataTypes.STRING,
-    defaultValue: 'active'
-  },
-  lastSignInAt: {
-    type: DataTypes.DATE
   }
 }, { 
   timestamps: true,
