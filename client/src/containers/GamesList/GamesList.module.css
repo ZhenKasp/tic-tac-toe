@@ -1,8 +1,8 @@
-.GamesList {
-  margin-top: 30px;
-  margin-left: 30px;
-}
-
 .GamesList .Header {
   font-size: 30px;
+}
+
+.GamesList {
+  display: flex;
+  flex-wrap: wrap;
 }

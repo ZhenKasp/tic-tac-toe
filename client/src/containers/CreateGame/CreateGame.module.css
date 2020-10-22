@@ -1,11 +1,6 @@
-.CreateGame {
-  margin: 10px;
-  margin-left: 30px;
-  font-size: 30px;
-}
-
 .CreateGame .Header {
   margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 .CreateGame button {
@@ -20,8 +15,9 @@
 }
 
 .CreateGame input {
+  width: 315px;
   min-width: 200px;
-  max-width: 285px;
+  max-width: 315px;
 }
 
 .Tag {
@@ -53,7 +49,7 @@ input {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; 
 }
 
 input:focus {
@@ -108,6 +104,14 @@ input:focus {
   cursor: pointer;
 }
 
-.SuggestionsTag li:last-child {
-  border-bottom: none;
+.SuggestionsTag li {
+  border-bottom: 1px solid #ddd;
+  padding: 7px 20px;
+  margin-left: -40px;
+  cursor: pointer;
+}
+
+.ButtonSubmit {
+  margin-top: 10px;
+  width: 315px !important;
 }

@@ -20,7 +20,7 @@ const listElement = (props) => {
         Second user
       </div>
       <div>
-        GamePreview
+        {props.moves}
       </div>
     </div>
   )

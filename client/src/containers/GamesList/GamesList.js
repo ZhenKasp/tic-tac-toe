@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ListElement from "../../components/ListElement/ListElement";
 import axios from 'axios';
 import classes from './GamesList.module.css';
-
+import Aux from '../../hoc/Auxiliary';
 
 class GamesList extends Component {
   state = {
@@ -34,6 +34,7 @@ class GamesList extends Component {
           <ListElement
             key={game.id}
             id={game.id}
+            moves={game.moves}
             name={game.name}
             tags={game.tags}
             changeView={this.props.changeView}
@@ -50,10 +51,13 @@ class GamesList extends Component {
   render() {
     const ListElement = this.returnGameElements;
     return (
-      <div className={classes.GamesList}>
+      <Aux>
         <div className={classes.Header}>List of games:</div>
-        <ListElement />
-      </div>
+        <div className={classes.GamesList}>
+          <ListElement />
+        </div>
+      </Aux>
+      
     )
   }
 }

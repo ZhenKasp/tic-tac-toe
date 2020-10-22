@@ -1,4 +1,4 @@
-import React, { Component  } from 'react';
+import React, { Component, useState  } from 'react';
 import classes from './GameBoard.module.css';
 import cellClasses from "../Cell/Cell.module.css";
 import Cell from '../Cell/Cell';
@@ -9,12 +9,14 @@ class GameBoard extends Component {
   state = {
     moveSign: localStorage.setItem("moveSign", "cross"),
     array: localStorage.setItem("moves", "0|0|0|0|0|0|0|0|0"),
-    response: ""
+    response: "",
+    blockMoves: this.props.blockMoves || false
   }
 
   onClick = (target) => {
-    if (!target.classList.contains("fa")) {
+    if (this.state.blockMoves === false && !target.classList.contains("fa")) {
       let moves = localStorage.getItem("moves").split('|');
+        
       if (localStorage.getItem("moveSign") === "cross") {
         target.classList.add("fa", "fa-close", cellClasses.Cross);
         localStorage.setItem("moveSign", "circle");
@@ -26,6 +28,7 @@ class GameBoard extends Component {
       }
       localStorage.setItem("moves", moves.join("|"));
     }
+    if (this.props.isCreate === true) this.setState({blockMoves : true})
   }
   
   componentDidMount() {
@@ -34,7 +37,6 @@ class GameBoard extends Component {
       const socket = socketIOClient(ENDPOINT);
       socket.on("FromAPI", data => {
         this.setState({response: data});
-        console.log(this.state.response)
       });
     } catch (err) {
       console.log(err.message)
@@ -56,14 +58,9 @@ class GameBoard extends Component {
     const Cells = this.returnCells;
 
     return (
-      <Aux>
-        <div className={classes.Header}>
-          GameBoard:
-        </div>
-        <div className={classes.Board}>
-          <Cells /> 
-        </div>
-      </Aux>
+      <div className={classes.Board}>
+        <Cells /> 
+      </div>
     )
   }
 }

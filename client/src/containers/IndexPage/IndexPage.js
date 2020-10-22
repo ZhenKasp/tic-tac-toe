@@ -4,6 +4,7 @@ import SearchElement from '../../components/SearchElement/SearchElement';
 import GamesList from '../GamesList/GamesList';
 import CreateGame from '../CreateGame/CreateGame';
 import GameBoard from '../../components/GameBoard/GameBoard';
+import classes from './IndexPage.module.css'
 
 class IndexPage extends Component {
   state = {
@@ -21,15 +22,15 @@ class IndexPage extends Component {
 
   render() {
     return (
-      <Aux>
+      <div className={classes.IndexPage}>
         {this.state.isGame === false ? (
           <Aux>
-            <SearchElement />
             <CreateGame 
               createFlashMessage={this.props.createFlashMessage} 
               changeGameParams={this.changeGameParams}
               changeView={this.changeView}
             />
+            <SearchElement />
             <GamesList 
               changeView={this.changeView}
               gameList={this.state.gameList}
@@ -37,7 +38,7 @@ class IndexPage extends Component {
           </Aux>
         ) : <GameBoard params={this.state.gameParams} />
         }
-      </Aux>
+      </div>
     )
   }
 }
