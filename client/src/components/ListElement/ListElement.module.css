@@ -6,9 +6,14 @@
   padding: 5px;
   width: 200px;
   height: 200px;
-
   cursor: pointer;
   transition: background-color 0.15s ease-in-out;
+}
+
+.ListElement div {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; 
 }
 
 .ListElement:hover {

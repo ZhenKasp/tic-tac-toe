@@ -1,5 +1,6 @@
 import React  from 'react';
-import classes from './ListElement.module.css'
+import classes from './ListElement.module.css';
+import GameBoard from '../../components/GameBoard/GameBoard';
 
 const listElement = (props) => {
   return (
@@ -14,10 +15,7 @@ const listElement = (props) => {
         {props.firstUser}
       </div>
       <div>
-        Second user
-      </div>
-      <div>
-        {props.moves}
+        <GameBoard moves={props.moves} isBlocked={true} preview={true} />
       </div>
     </div>
   )

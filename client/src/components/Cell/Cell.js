@@ -12,7 +12,7 @@ const cell = (props) => {
   return (
     <div
       id={props.id}
-      className={`${classes.Cell} ${move}`}
+      className={`${classes.Cell} ${move} ${props.preview && classes.Preview}`}
       onClick={e => props.onClick(e.currentTarget)}
     />
   )

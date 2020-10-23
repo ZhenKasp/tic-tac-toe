@@ -14,3 +14,16 @@
   background-color: #53346d;
   border-radius: 5px;
 }
+
+.Preview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  border: 7px solid #53346d;
+  width: 90px;
+  height: 90px;
+  margin: 5px auto 0;
+  box-sizing: content-box;
+  background-color: #53346d;
+  border-radius: 5px;
+}

@@ -55,7 +55,13 @@ class GameBoard extends Component {
     return (
       this.state.moves.split('|').map((cell, index) => {
         return (
-          <Cell key={`box${index}`} id={index} onClick={this.onClick} move={cell} />
+          <Cell
+            key={`box${index}`}
+            id={index}
+            onClick={this.onClick}
+            move={cell}
+            preview={this.props.preview}
+          />
         )
       })
     )
@@ -65,7 +71,7 @@ class GameBoard extends Component {
     const Cells = this.returnCells;
 
     return (
-      <div className={classes.Board}>
+      <div className={this.props.preview ? classes.Preview : classes.Board}>
         <Cells /> 
       </div>
     )

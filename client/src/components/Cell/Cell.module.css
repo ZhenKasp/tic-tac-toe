@@ -10,7 +10,7 @@
   background-color: #e0e0e2;
 }
 
-.Cross {
+.Cross, .Circle {
   background-color: #90d4dd;
 }
 
@@ -23,11 +23,7 @@
   text-shadow: -3px 2px 0px rgba(255, 255, 255,1);
 }
 
-.Cross:hover {
-  background-color: #90d4dd;
-}
-
-.Circle {
+.Cross:hover, .Circle:hover {
   background-color: #90d4dd;
 }
 
@@ -40,6 +36,20 @@
   text-shadow: -3px 2px 0px rgba(255, 255, 255,1);
 }
 
-.Circle:hover {
+.Preview {
+  max-height: 30px;
+}
+
+.Preview.Cell:hover {
+  background-color: white;
+}
+
+.Preview.Cross:hover, .Preview.Circle:hover {
   background-color: #90d4dd;
+}
+
+.Preview.Cross:before, .Preview.Circle:before {
+  font-size: 28px;
+  top: -3px;
+  left: 3px;
 }
