@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import classes from './TagsInput.module.css';
 import { WithContext as ReactTags } from 'react-tag-input';
+import axios from 'axios';
 
 class TagsInput extends Component {
-  state = { tags: this.props.parentTags }
+  state = { 
+    tags: this.props.parentTags,
+    suggestions: []
+  }
 
   handleDelete = (i) => {
     const { tags } = this.state;
@@ -33,7 +37,25 @@ class TagsInput extends Component {
     }
   }
 
+  componentDidMount() {
+    try {
+      axios.get(process.env.REACT_APP_PATH_TO_SERVER + "tags", { headers: { authorization: localStorage.getItem('token') }})
+      .then(res => {
+        if (res.data.error) {
+          this.props.createFlashMessage(res.data.error, res.data.variant);
+        } else {
+          console.log(res.data.suggestions);
+          this.setState({ suggestions: res.data.suggestions });
+        }
+      });
+    } catch (err) {
+      this.props.createFlashMessage(err.message, "danger");
+    }
+  }
+
   render() {
+    console.log(1311313);
+    let suggestions = this.state.suggestions.map(tag => { return {id: tag, text: tag}})
     return (
       <ReactTags
         classNames={{
@@ -43,14 +65,7 @@ class TagsInput extends Component {
           remove: classes.RemoveTag,
           suggestions: classes.SuggestionsTag
         }}
-        suggestions={[
-          { id: 'USA', text: 'USA' },
-          { id: 'Germany', text: 'Germany' },
-          { id: 'Austria', text: 'Austria' },
-          { id: 'Costa Rica', text: 'Costa Rica' },
-          { id: 'Sri Lanka', text: 'Sri Lanka' },
-          { id: 'Thailand', text: 'Thailand' }
-      ]}
+        suggestions={suggestions}
         tags={this.state.tags}
         name="tags"
         handleDelete={this.handleDelete}

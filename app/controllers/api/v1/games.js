@@ -28,6 +28,10 @@ games = (app) => {
         res.json({ error: error.errors[0].message, variant: "danger"}).status(400); 
       }  
     })();
+
+    app.get("api/v1/games", authenticateToken, (req, res)=> {
+      const search = req.body.search
+    })
   }); 
 };
 
