@@ -7,6 +7,7 @@
   width: 200px;
   background-color: #53346d;
   border-color: #51326b;
+  margin-bottom: 10px;
 }
 
 .CreateGame button:hover, .CreateGame button:active, .CreateGame button:focus {

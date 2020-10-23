@@ -81,10 +81,3 @@ input:focus {
   margin-left: -40px;
   cursor: pointer;
 }
-
-.SuggestionsTag li {
-  border-bottom: 1px solid #ddd;
-  padding: 7px 20px;
-  margin-left: -40px;
-  cursor: pointer;
-}

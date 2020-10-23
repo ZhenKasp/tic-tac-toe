@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import classes from './TagsInput.module.css';
 import { WithContext as ReactTags } from 'react-tag-input';
-import axios from 'axios';
 
 class TagsInput extends Component {
   state = { 
-    tags: this.props.parentTags,
-    suggestions: []
+    tags: this.props.parentTags
   }
 
   handleDelete = (i) => {
@@ -37,25 +35,9 @@ class TagsInput extends Component {
     }
   }
 
-  componentDidMount() {
-    try {
-      axios.get(process.env.REACT_APP_PATH_TO_SERVER + "tags", { headers: { authorization: localStorage.getItem('token') }})
-      .then(res => {
-        if (res.data.error) {
-          this.props.createFlashMessage(res.data.error, res.data.variant);
-        } else {
-          console.log(res.data.suggestions);
-          this.setState({ suggestions: res.data.suggestions });
-        }
-      });
-    } catch (err) {
-      this.props.createFlashMessage(err.message, "danger");
-    }
-  }
-
   render() {
-    console.log(1311313);
-    let suggestions = this.state.suggestions.map(tag => { return {id: tag, text: tag}})
+    let suggestions = this.props.suggestions.map(tag => { return {id: tag, text: tag}});
+    
     return (
       <ReactTags
         classNames={{

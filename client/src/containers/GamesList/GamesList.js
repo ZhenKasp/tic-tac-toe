@@ -30,16 +30,18 @@ class GamesList extends Component {
     const games = this.state.games;
     if (games.length !== 0) {
       return (games.map(game => {
-        return (
-          <ListElement
-            key={game.id}
-            id={game.id}
-            moves={game.moves}
-            name={game.name}
-            tags={game.tags}
-            changeView={this.props.changeView}
-          />
-        )
+        if (this.props.clickedTags.length === 0 || game.tags.split("|").some(v=> this.props.clickedTags.indexOf(v) !== -1)) {
+          return (
+            <ListElement
+              key={game.id}
+              id={game.id}
+              moves={game.moves}
+              name={game.name}
+              tags={game.tags}
+              changeView={this.props.changeView}
+            />
+          )
+        }
       }))
     } else {
       return (

@@ -1,19 +1,24 @@
 import React from 'react';
 import classes from './SearchElement.module.css';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const searchElement = (props) => (
-  <div className={classes.SearchElement}> 
-    <p>Search:</p> 
-    <Form onSubmit={(event) => console.log(event)} >
-      <Form.Control type="text" placeholder="Search game" />
-      <Button variant="primary" type="submit">
-        Find game
-      </Button> 
-    </Form>
-  </div>
-)
+const searchElement = (props) => {
+  return (
+    <div className={classes.SearchElement}> 
+      <p>Filter:</p> 
+      {props.tags.map(tag => {
+        if (tag.length > 0) {
+          return (
+            <div
+              className={props.clickedTags.includes(tag) ? classes.ClickedTag + " " + classes.Tag : classes.Tag }
+              onClick={() => props.onClick(tag)}>
+              {tag}
+            </div>
+          )
+        } 
+      })}
+    </div>
+  )  
+}
 
 export default searchElement;

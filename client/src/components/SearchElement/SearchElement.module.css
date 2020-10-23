@@ -1,20 +1,26 @@
-.SearchElement {
-  max-width: 274px;
-  width: 100%;
-}
-
 .SearchElement p {
   font-size: 30px;
+  margin-bottom: 0;
 }
 
-.SearchElement button {
-  min-width: 200px;
-  width: 200px;
+.Tag {
+  font-size: 16px;
+  display: inline-block;
+  align-items: center;
+  margin-right: 5px;
+  padding: 3px 6px;
+  border: 1px solid #ced4da;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  color: #495057;
+  transition: .13s ease-out;
+}
+
+.Tag:hover {
+  cursor: pointer;
+}
+
+.ClickedTag {
   background-color: #53346d;
-  border-color: #51326b;
-}
-
-.SearchElement button:hover, .SearchElement button:active, .SearchElement button:focus {
-  background-color: #43265c !important;
-  border-color: #51326b;
+  color: white;
 }

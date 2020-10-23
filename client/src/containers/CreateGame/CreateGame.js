@@ -72,9 +72,17 @@ class CreateGame extends Component {
               placeholder="Game name" 
               onChange={this.handleNameChange}
             />
-            <TagsInput onChange={this.tagsHandler} parentTags={this.state.tags} />
+            <TagsInput
+              onChange={this.tagsHandler}
+              parentTags={this.state.tags}
+              suggestions={this.props.suggestions}
+            />
             <div className={classes.Header}>Set the first move:</div>
-            <GameBoard isCreate={true} resetMoves={this.state.resetMoves} onChange={this.movesChangeHandler} />
+            <GameBoard
+              isCreate={true}
+              resetMoves={this.state.resetMoves}
+              onChange={this.movesChangeHandler}
+            />
             <Button 
               className={classes.ButtonSubmit} 
               variant="primary" 
