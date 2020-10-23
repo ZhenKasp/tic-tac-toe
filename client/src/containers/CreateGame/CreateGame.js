@@ -85,8 +85,7 @@ class CreateGame extends Component {
             />
             <Button 
               className={classes.ButtonSubmit} 
-              variant="primary" 
-              type="sybmit" 
+              disabled={this.state.moves === "0|0|0|0|0|0|0|0|0"}
               onClick={this.createGameOnClick}>
               Create game
             </Button> 

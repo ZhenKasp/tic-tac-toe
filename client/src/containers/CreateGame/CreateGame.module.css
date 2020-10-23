@@ -11,7 +11,13 @@
 }
 
 .CreateGame button:hover, .CreateGame button:active, .CreateGame button:focus {
-  background-color: #43265c !important;
+  background-color: #43265c;
+  border-color: #51326b;
+}
+
+.CreateGame button:disabled {
+  transition: background-color 1.3s ease-out;
+  background-color: #43265c;
   border-color: #51326b;
 }
 
